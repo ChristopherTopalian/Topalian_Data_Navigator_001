@@ -1,0 +1,173 @@
+<!-- Dedicated to God the Father -->
+<!-- All Rights Reserved Christopher Topalian Copyright 2000-2022 -->
+<!-- https://github.com/ChristopherTopalian -->
+<!-- https://github.com/ChristopherTopalian/Topalian_Data_Navigator -->
+<!-- Topalian_Data_Navigator_001.html -->
+
+<!--
+Creates elements with content from a specified array of objects.
+Each button created can open a specific pdf, webpage, video, or texture, in a new window.
+We include a description for each button and a url link to the original url source.
+-->
+
+<!-- Watch the YouTube video below to see the script in action -->
+<!-- https://www.youtube.com/watch?v=rt1zYba05ws -->
+
+<!-- Watch more scripting tutorial videos at: -->
+<!-- https://www.youtube.com/ScriptingCollege -->
+
+<style>
+
+body
+{
+    background-color: rgb(100, 100, 100);
+}
+
+b
+{
+    font-weight: 700;
+}
+
+hr
+{
+    color: rgb(255, 255, 255);
+}
+
+a:link
+{
+    color: rgb(170, 170, 170);
+}
+
+a:hover
+{
+    color: rgb(255, 255, 255);
+}
+
+a:visited
+{
+    color: rgb(170, 170, 170);
+}
+
+.buttonStyle
+{
+    margin: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 8px;
+    border-color: rgb(0, 0, 0);
+    font-family: tahoma;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.buttonStyle:hover
+{
+    border-color: rgb(255, 255, 255);
+}
+
+.dedicationStyle
+{
+    padding: 2px;
+    font-family: arial;
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+.titleStyle
+{
+    margin: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-family: arial;
+    font-size: 32px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+.descriptionStyle
+{
+    padding-left: 12px;
+    padding-right: 12px;
+    color: rgb(255, 255, 255);
+    font-family: arial;
+    font-size: 20px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
+
+</style>
+
+<!-- the data file is located in our data folder -->
+<script src = "data/elementsArray.js"></script>
+
+<!-- the data file is located on our web server -->
+<!--
+<script src = "https://collegeofscripting.weebly.com/uploads/6/4/4/8/64482293/elementsarray.js"></script>
+-->
+
+<script>
+
+function dataCreate(whichArray)
+{
+    let mainDiv = document.createElement("div");
+
+    document.body.append(mainDiv);
+
+    for (let x = 0; x < whichArray.length; x++)
+    {
+        let containerDiv = document.createElement("div");
+
+        mainDiv.append(containerDiv);
+
+        let theButton = document.createElement("button");
+
+        theButton.className = "buttonStyle";
+
+        theButton.onclick = function() { window.open(whichArray[x].url, "", "width = 1000, height = 800"); };
+
+        theButton.innerHTML = whichArray[x].name;
+
+        containerDiv.append(theButton);
+
+        let theDescription = document.createElement("div");
+
+        theDescription.className = "descriptionStyle";
+
+        theDescription.innerHTML = whichArray[x].description + "<br>";
+
+        theDescription.innerHTML += "<a target = '_blank' href = \"" + whichArray[x].urlSource + "\">" + whichArray[x].urlSource + "<hr>";
+
+        containerDiv.append(theDescription);
+    }
+}
+
+</script>
+</head>
+
+<body onload = "dataCreate(elementsArray);">
+
+<center>
+<div class = "dedicationStyle">
+Dedicated to God the Father
+</div>
+</center>
+
+<center>
+<div class = "titleStyle"> Topalian Data Navigator
+</div>
+</center>
+
+<hr>
+
+</body>
+
+</html>
